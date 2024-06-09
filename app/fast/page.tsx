@@ -1,4 +1,4 @@
-import Pokemons from "./Pokemons";
+import PokemonList from "./PokemonList";
 
 async function fetchPokemon(id: number) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -13,5 +13,5 @@ export default async function Home() {
     const pokemonsStringArray = await Promise.all<string>(pokemonIds.map(item => fetchPokemon(item)));
     const pokemonsString = `[${pokemonsStringArray.join(",")}]`;
 
-    return <Pokemons pokemons={pokemonsString} />;
+    return <PokemonList pokemons={pokemonsString} />;
 }
